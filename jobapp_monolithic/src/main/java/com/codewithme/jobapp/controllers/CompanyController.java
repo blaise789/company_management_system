@@ -1,6 +1,7 @@
 package com.codewithme.jobapp.controllers;
 
-import com.codewithme.jobapp.Entities.Company;
+import com.codewithme.jobapp.Models.Company;
+import com.codewithme.jobapp.error.CompanyNotFoundException;
 import com.codewithme.jobapp.services.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,13 +21,13 @@ public class CompanyController {
 
     }
     @GetMapping("{id}")
-    public ResponseEntity findCompany(@PathVariable("id") Long companyId){
-        Company company=companyService.getCompany(companyId);
-        if(company  !=null){
-            return  new ResponseEntity<>(company,HttpStatus.OK);
-        }
+    public ResponseEntity findCompany(@PathVariable("id") Long companyId) throws CompanyNotFoundException {
+//        Company company=companyService.getCompany(companyId);
+//        if(company  !=null){
+            return  new ResponseEntity<>(companyService.getCompany(companyId),HttpStatus.OK);
+//        }
 
-        return  new ResponseEntity<>("user not found",HttpStatus.NOT_FOUND);
+//        return  new ResponseEntity<>("user not found",HttpStatus.NOT_FOUND);
 
     }
     @PostMapping()

@@ -1,6 +1,7 @@
 package com.codewithme.jobapp.services.impl;
 
-import com.codewithme.jobapp.Entities.Company;
+import com.codewithme.jobapp.Models.Company;
+import com.codewithme.jobapp.error.CompanyNotFoundException;
 import com.codewithme.jobapp.repositories.CompanyRepository;
 import com.codewithme.jobapp.services.CompanyService;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,12 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company getCompany(Long id) {
-        return companyRepository.findById(id).orElse(null);
+    public Company getCompany(Long id) throws CompanyNotFoundException {
+        Optional<Company> company=companyRepository.findById(id);
+        if(!company.isPresent()){
+            throw  new CompanyNotFoundException("company does not exist");
+        }
+        return company.get();
     }
 
     @Override

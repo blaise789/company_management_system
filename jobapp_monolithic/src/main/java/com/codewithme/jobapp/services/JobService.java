@@ -1,6 +1,6 @@
 package com.codewithme.jobapp.services;
 
-import com.codewithme.jobapp.Entities.Job;
+import com.codewithme.jobapp.Models.Job;
 
 import java.util.List;
 

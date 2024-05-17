@@ -1,7 +1,6 @@
-package com.codewithme.jobapp.Entities;
+package com.codewithme.jobapp.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 

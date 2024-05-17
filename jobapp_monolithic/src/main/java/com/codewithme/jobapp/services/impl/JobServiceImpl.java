@@ -1,13 +1,11 @@
 package com.codewithme.jobapp.services.impl;
 
-import com.codewithme.jobapp.Entities.Job;
+import com.codewithme.jobapp.Models.Job;
 import com.codewithme.jobapp.repositories.JobRepository;
 import com.codewithme.jobapp.services.JobService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
