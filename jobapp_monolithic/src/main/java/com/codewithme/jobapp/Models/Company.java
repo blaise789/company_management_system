@@ -18,9 +18,11 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column()
     private String name;
     private String description;
     @OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+
     @JsonIgnore
     private List<Job> jobs;
     @OneToMany(mappedBy = "company",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
