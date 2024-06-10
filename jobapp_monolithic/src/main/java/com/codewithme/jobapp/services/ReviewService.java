@@ -12,4 +12,5 @@ public interface ReviewService {
     Review getReview(Long companyId,Long reviewId) throws CompanyNotFoundException, ReviewNotFoundException;
     void updateReview(Review updatedReview,Long companyId,Long reviewId) throws CompanyNotFoundException, ReviewNotFoundException;
     void deleteReview(Long compId,Long reviewId) throws CompanyNotFoundException, ReviewNotFoundException;
+
 }
