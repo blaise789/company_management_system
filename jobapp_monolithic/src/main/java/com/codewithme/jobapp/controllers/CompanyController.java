@@ -60,5 +60,10 @@ public class CompanyController {
 
 
     }
+ @GetMapping("/search/{name}")
+ public ResponseEntity<List<Company>> searchFoR(@PathVariable("name") String name){
+        List<Company>  companies=companyService.searchCompanyByTitle(name);
+ return  ResponseEntity.ok(companies);
+ }
 
 }

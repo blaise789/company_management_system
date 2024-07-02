@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  jobapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my_app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/comp_mis
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=Blaise@123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "5100:8080"
+    networks:
+      - jobapp_network
+
+  db:
+    image: postgres
+    container_name: local_pgdb
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Blaise@123
+      POSTGRES_DB: comp_mis
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+    networks:
+      - jobapp_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - jobapp_network
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
+
+networks:
+  jobapp_network:

@@ -11,4 +11,5 @@ public interface CompanyService {
     public  Company getCompany(Long id) throws CompanyNotFoundException;
     public Boolean deleteCompany(Long id);
     public  Boolean updateCompany(Long id,Company company);
+    public  List<Company> searchCompanyByTitle(String title);
 }

@@ -42,6 +42,6 @@ public class ReviewController {
     @PutMapping("{reviewId}")
     private ResponseEntity<String> updateCompanyReview(@PathVariable("companyId") Long companyId,@PathVariable("reviewId") Long reviewId,Review review) throws ReviewNotFoundException, CompanyNotFoundException {
         reviewService.updateReview(review,companyId,reviewId);
-        return new ResponseEntity<>("review updates scucessfully",HttpStatus.OK)
+        return new ResponseEntity<>("review updates scucessfully",HttpStatus.OK);
     }
 }

@@ -19,7 +19,7 @@ public class CompanyServiceImpl implements CompanyService {
         return companyRepository.findAll();
     }
 
-    @Override
+    @Override                 
     public Company createCompany(Company company) {
 
             return companyRepository.save(company);
@@ -59,5 +59,10 @@ public class CompanyServiceImpl implements CompanyService {
         }
 return false;
 
+    }
+
+    @Override
+    public List<Company> searchCompanyByTitle(String title) {
+        return companyRepository.findCompaniesByNameContainingIgnoreCase(title) ;
     }
 }
